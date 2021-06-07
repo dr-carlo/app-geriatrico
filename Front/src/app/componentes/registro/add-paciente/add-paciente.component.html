@@ -1,0 +1,53 @@
+
+
+<mat-vertical-stepper #stepper >
+  <mat-step [stepControl]="datosPaciente">
+    <form [formGroup]="datosPaciente" >
+      <ng-template matStepLabel>Datos Primarios </ng-template>
+
+      <mat-form-field>  
+        <mat-label class="fuente">Nombre Completo</mat-label>
+        <input formControlName="nombre" type="text" class="form-control"
+              placeholder="Ingrese nombre" matInput required/>
+      </mat-form-field>
+      
+      
+      <mat-form-field>
+        <mat-label class="fuente">NÂº Doc.</mat-label>
+        <input formControlName="dni" matInput type="number" 
+          placeholder="Ingrese doc"  class="form-control" required />
+      </mat-form-field>
+
+      <mat-form-field>  
+        <mat-label class="fuente">Email</mat-label>
+        <input formControlName="email" type="email" class="form-control"
+              placeholder="Ingrese email" matInput required/>
+      </mat-form-field>
+
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="datosPaciente">
+    <form [formGroup]="datosPaciente">
+      <ng-template matStepLabel>Datos Secundarios</ng-template>
+
+      <mat-form-field>
+        <mat-label class="fuente">Obra social</mat-label>
+        <mat-select formControlName="obsocial" multiple >
+          <mat-option *ngFor="let e of obsocial" [value]="e" >{{e}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br>
+      <input  class="fuente" formControlName="fotoPac" 
+        id="imagen"  type="file">
+        <br><br>
+        
+        <button style="margin-right: 10px;"  type="submit" (click)="guardar()"
+            class="btn btn-primary buttons"  >Guardar Paciente</button>
+        <button class="btn btn-primary buttons" (click)="stepper.reset()">
+            Limpiar todo</button>
+    </form>
+  </mat-step>
+
+</mat-vertical-stepper>
+
