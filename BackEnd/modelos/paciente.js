@@ -1,5 +1,4 @@
 
-// import mongoose from "mongoose";
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
@@ -18,22 +17,16 @@ const postSchema = new Schema({
   },
   
   obsocial: { type: String,
-    required: [true, 'email es requerido..'] },
+    required: [true, 'Obra Social requerida'] },
 
   dni: {
     type: Number,
-    required: [true, 'email es requerido..']
+    required: [true, 'DNI requerido']
   }
-  // date: {
-  //   type: Date,
-  //   default: Date.now
-  // }
-  });
+ });
 
-// export default mongoose.model('Posts', postSchema);
 const Post =  mongoose.model('pacientes', postSchema);
 module.exports = Post;
-
 
 
 
