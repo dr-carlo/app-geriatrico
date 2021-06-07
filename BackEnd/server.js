@@ -6,7 +6,7 @@ const path = require('path');
 const postRoute = require('./rutas');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/mean_todo');
+mongoose.connect('mongodb://localhost:27017/geriatrico_mean');
 const port = process.env.PORT || 3001;
 const app = express();
 const server = http.createServer(app);
