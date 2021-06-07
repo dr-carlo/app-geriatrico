@@ -1,0 +1,78 @@
+
+<mat-vertical-stepper #stepper >
+  <mat-step [stepControl]="datosTutor">
+    <form [formGroup]="datosTutor" >
+      <ng-template matStepLabel>Datos Personales </ng-template>
+      <mat-form-field>  
+        <mat-label class="fuente">Nombre Completo</mat-label>
+        <input formControlName="nombre" 
+              placeholder="Ingrese nombre.." 
+              type="text"
+              class="fuente" 
+              matInput />
+      </mat-form-field>
+      
+      <mat-form-field>  
+        <mat-label class="fuente">Telefono</mat-label>
+        <input formControlName="telefono"  
+              placeholder="Tel de contacto" 
+              class="fuente" 
+              type="tel"
+              matInput/>
+      </mat-form-field>       
+    <br><br>
+    <mat-form-field>
+      <h6>Genero</h6>
+      <mat-select formControlName="genero" >
+        <mat-option *ngFor="let e of genero" [value]="e" >{{e}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+     
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="datosTutor">
+    <form [formGroup]="datosTutor" >
+      <ng-template matStepLabel>Datos Extras </ng-template>
+      <mat-form-field>  
+        <mat-label >Direccion</mat-label>
+        <input formControlName="direccion" 
+              placeholder="Ingrese direccion" 
+              type="text"
+              matInput />
+      </mat-form-field>
+
+      <mat-form-field>  
+        <input formControlName="fechaNac" type="date" 
+                placeholder="Fecha nacimiento" 
+                matInput required/>
+      </mat-form-field>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="datosTutor">
+    <form [formGroup]="datosTutor" >
+      
+      <ng-template matStepLabel>Datos de Usuario</ng-template>
+      <mat-form-field>  
+        <mat-label class="fuente">Email</mat-label>
+        <input formControlName="email"  
+              placeholder="Ingrese usuario" 
+              type="email"
+              matInput required />
+      </mat-form-field>
+      <mat-form-field>  
+        <mat-label class="fuente">ContraseÃ±a</mat-label>
+        <input formControlName="password" 
+              placeholder="Ingrese clave" 
+              type="password"
+              class="fuente" 
+              matInput required />
+      </mat-form-field>
+      <br><br>
+    <button style="margin-right: 10px;"  type="submit" 
+      class="btn btn-primary buttons" (click)="guardar()" >Guardar Tutor</button>
+      <button class="btn btn-primary buttons" (click)="stepper.reset()">
+        Limpiar todo</button>
+    </form>
+  </mat-step>
+
+</mat-vertical-stepper>
