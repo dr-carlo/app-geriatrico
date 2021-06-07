@@ -1,4 +1,5 @@
 
+
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
@@ -10,6 +11,7 @@ router.get('/traer', (req, res, next) => {
   Post
     .find()
     .sort({ date: -1 })
+    // PARA TRAER DESDE MONGO
     .select(' nombre email dni obsocial')
     .exec()
     .then(posts => {
@@ -31,6 +33,7 @@ router.get('/traer/tut', (req, res, next) => {
   PostT
     .find()
     .sort({ date: -1 })
+    // PARA TRAER DESDE MONGO
     .select(' nombre telefono genero direccion fechaNac email password ')
     .exec()
     .then(posts => {
@@ -160,53 +163,8 @@ router.post('/reg/add/tut', (req, res, next) => {
       return res.status(500).json(err);
     });
 });
-
 //#endregion
 
-//#region metodo Patch-Update Http
-router.get('/reg/:id', (req, res, next) => {
-  let postId = req.params.id;
-  Post
-    .findOne({ _id: postId })
-    .select('nombre email')
-    .exec()
-    .then(post => {
-      if (post.length < 1) {
-        return res.status(409).json({
-          success: false,
-          message: `no post found...`
-        });
-      } else {
-        return res.status(200).json(post);
-      }
-    })
-    .catch(err => {
-      return res.status(500).json(err);
-    });
-});
-
-router.patch('/reg/patch/:id', (req, res, next) => {
-  let postId = req.params.id;
-  let newPost = {
-    nombre: req.body.nombre,
-    email: req.body.email,
-    obsocial: req.body.obsocial,
-    dni: req.body.dni    
-  };
-  Post
-    .updateOne({ _id: postId }, { $set: newPost })
-    .exec()
-    .then(post => {
-      return res.status(200).json({
-        success: true,
-        post: post
-      });
-    })
-    .catch(err => {
-      return res.status(500).json(err);
-    })
-});
-//#endregion
 
 //#region metodo Delete Http
 router.delete('/borrar/:id', (req, res, next) => {
@@ -273,4 +231,3 @@ router.delete('/borrar/tut/:id', (req, res, next) => {
 //#endregion
 
 module.exports = router;
-
