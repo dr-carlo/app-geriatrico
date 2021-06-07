@@ -1,7 +1,4 @@
 
-// import express from "express";
-// import mongoose from "mongoose";
-// import Post from "./modelo";
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
@@ -275,7 +272,5 @@ router.delete('/borrar/tut/:id', (req, res, next) => {
 });
 //#endregion
 
-
-// export default router;
 module.exports = router;
 
