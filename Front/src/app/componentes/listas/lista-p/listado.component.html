@@ -1,0 +1,35 @@
+
+<div class="mt-4">
+  <hr>
+  <ng-container *ngIf="rr; else noRegistros">
+    <div *ngFor="let k of rr" class="mat-table">
+      <div class="card-body">
+        <ul class="list-group">
+          <li class="list-group-item">
+            <strong>Usuario: </strong>
+            <span class="float-right">{{ k.nombre}} </span>
+          </li>
+          <li class="list-group-item">
+            <strong>Email: </strong>
+            <span class="float-right">{{ k.email }}</span>
+          </li>
+          <li class="list-group-item">
+            <strong>NÂº Documento: </strong>
+            <span class="float-right">{{ k.dni }}</span>
+          </li>
+          <li class="list-group-item">
+            <strong>Obra Social: </strong>
+            <span class="float-right">{{ k.obsocial }}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="conteiner" style="text-align:right;">
+        <button (click)="eliminar(k._id)" class="btn btn-danger "> Eliminar</button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #noRegistros>
+        <h5 class="text-muted">No hay pacientes registrado</h5>
+  </ng-template>
+</div>
+
