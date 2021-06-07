@@ -1,0 +1,47 @@
+
+<div class="mt-4">
+    <hr>
+    <ng-container *ngIf="kk; else noRegistros">
+      <div *ngFor="let k of kk" class="mat-table">
+        <div class="card-body">
+          <ul class="list-group">
+            
+            <li class="list-group-item">
+              <strong>Nombre Completo: </strong>
+              <span class="float-right">{{ k.nombre }}</span>
+            </li>
+            <li class="list-group-item">
+              <strong>Telefono: </strong>
+              <span class="float-right">{{ k.telefono }}</span>
+            </li>
+            <li class="list-group-item">
+              <strong>Genero: </strong>
+              <span class="float-right">{{ k.genero}}</span>
+            </li>
+            <li class="list-group-item">
+              <strong>Direccion: </strong>
+              <span class="float-right">{{ k.direccion}}</span>
+            </li>
+            <li class="list-group-item">
+              <strong>Fecha: </strong>
+              <span class="float-right">{{ k.fechaNac}}</span>
+            </li>
+            <li class="list-group-item">
+              <strong>Usuario: </strong>
+              <span class="float-right">{{ k.email }}</span>
+            </li>
+            <li class="list-group-item">
+              <strong>Clavve de usuario: </strong>
+              <span class="float-right">{{ k.password}} </span>
+            </li>
+          </ul>
+        </div>
+        <div class="conteiner" style="text-align:right;">
+          <button (click)="eliminar(k._id)" class="btn-danger "> Eliminar</button>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noRegistros>
+          <h5 class="text-muted">No hay tutores registrados</h5>
+    </ng-template>
+  </div>
